@@ -1,6 +1,13 @@
 # LIT-test-task
 A test task for "Longevity In Time", an API in which a user can register, get an OTP code, get an authorization token, edit their profile and delete it.
 
+### **Stack**
+![python version](https://img.shields.io/badge/Python-3.8-green)
+![django version](https://img.shields.io/badge/Django-3.2-green)
+![sorl-thumbnail version](https://img.shields.io/badge/Django%20REST%20Framework-%203.14.0-green)
+![Celery version](https://img.shields.io/badge/Celery-5.3-green)
+
+
 ### Preparing for launch
 After copying the repository in your virtual machine.
 Install and run Redis:
