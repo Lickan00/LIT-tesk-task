@@ -1,4 +1,4 @@
-# LIT-tesk-task
+# LIT-test-task
 A test task for "Longevity In Time", an API in which a user can register, get an OTP code, get an authorization token, edit their profile and delete it.
 
 ### Preparing for launch
