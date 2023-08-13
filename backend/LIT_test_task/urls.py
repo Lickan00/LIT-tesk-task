@@ -8,9 +8,9 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="LIT_tesk_task API",
+      title="LIT_test_task API",
       default_version='v1',
-      description="Documentation for the LIT_tesk_task project",
+      description="Documentation for the LIT_test_task project",
       contact=openapi.Contact(email="lickan00@gmail.com"),
    ),
    public=True,

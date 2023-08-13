@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
@@ -36,7 +36,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'LIT_tesk_task.urls'
+ROOT_URLCONF = 'LIT_test_task.urls'
 
 TEMPLATES = [
     {
@@ -54,37 +54,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'LIT_tesk_task.wsgi.application'
+WSGI_APPLICATION = 'LIT_test_task.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
-#         'NAME': os.getenv('DB_NAME', default='db_8g8c'),
-#         'USER': os.getenv('POSTGRES_USER', default='lickan'),
-#         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='f2WEzeyUvNDyUEW5z9ff8A0OVRDmrqB0'),
-#         'HOST': os.getenv('DB_HOST', default='dpg-cjcbh7bbq8nc739kt5hg-a'),
-#         'PORT': os.getenv('DB_PORT', default='5432')
-#     }
-# }
-
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://lickan:f2WEzeyUvNDyUEW5z9ff8A0OVRDmrqB0@dpg-cjcbh7bbq8nc739kt5hg-a.frankfurt-postgres.render.com/db_8g8c'
+        default=os.getenv('POSTGRES_URL')
         )
     }
-
-# dj_database_url.parse('')
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.Argon2PasswordHasher'
@@ -121,8 +101,6 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -139,6 +117,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 }
 
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
     'AUTH_HEADER_TYPES': ('Bearer',),
@@ -146,27 +125,17 @@ SIMPLE_JWT = {
 
 
 # Email
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'lickan00@gmail.com'
-EMAIL_HOST_PASSWORD = 'rzimqytadffszcrh'
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
 
-# EMAIL_HOST = os.getenv('EMAIL_HOST')
-# EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-# EMAIL_PORT = os.getenv('EMAIL_PORT')
-# EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
-
-
-FROM_EMAIL = 'LIT_tesk_task@GMAIL.COM'
-ADMIN_EMAIL = str(os.getenv('EMAIL_HOST_USER'))
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
 
 # EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 # EMAIL_FILE_PATH = BASE_DIR / 'auth-messages'
 
 
 # Celery settings
-# CELERY_BROKER_URL = "rediss://red-cjcc2f7db61s73drgf60:77X74TBN8O7oTv7OrFbTbHvMaGhGjEuY@frankfurt-redis.render.com:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
 CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
