@@ -55,8 +55,8 @@ celery -A LIT_test_task worker --loglevel=info
 [Balchugov Dmitry](https://github.com/Lickan00 "Github page")
 
 ## Running project
-http://130.193.39.123:8000/swagger/
-http://130.193.39.123:8000/api/v1/auth/signup/
-http://130.193.39.123:8000/api/v1/auth/login/
-http://130.193.39.123:8000/api/v1/auth/verify/
-http://130.193.39.123:8000/api/v1/users/
+http://130.193.39.123:8000/swagger/  <br>
+http://130.193.39.123:8000/api/v1/auth/signup/  <br>
+http://130.193.39.123:8000/api/v1/auth/login/  <br>
+http://130.193.39.123:8000/api/v1/auth/verify/  <br>
+http://130.193.39.123:8000/api/v1/users/  <br>
