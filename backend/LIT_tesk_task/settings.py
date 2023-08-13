@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 from datetime import timedelta
 from pathlib import Path
 
@@ -62,20 +63,28 @@ WSGI_APPLICATION = 'LIT_tesk_task.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': os.getenv('DB_ENGINE', default='django.db.backends.postgresql'),
-#         'NAME': os.getenv('DB_NAME', default='postgres'),
-#         'USER': os.getenv('POSTGRES_USER', default='postgres'),
-#         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='postgres'),
-#         'HOST': os.getenv('DB_HOST', default='db'),
+#         'NAME': os.getenv('DB_NAME', default='db_8g8c'),
+#         'USER': os.getenv('POSTGRES_USER', default='lickan'),
+#         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='f2WEzeyUvNDyUEW5z9ff8A0OVRDmrqB0'),
+#         'HOST': os.getenv('DB_HOST', default='dpg-cjcbh7bbq8nc739kt5hg-a'),
 #         'PORT': os.getenv('DB_PORT', default='5432')
 #     }
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default': dj_database_url.config(
+        default='postgres://lickan:f2WEzeyUvNDyUEW5z9ff8A0OVRDmrqB0@dpg-cjcbh7bbq8nc739kt5hg-a.frankfurt-postgres.render.com/db_8g8c'
+        )
     }
-}
+
+# dj_database_url.parse('')
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.Argon2PasswordHasher'
@@ -112,6 +121,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -135,6 +146,11 @@ SIMPLE_JWT = {
 
 
 # Email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'lickan00@gmail.com'
+EMAIL_HOST_PASSWORD = 'rzimqytadffszcrh'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
 
 # EMAIL_HOST = os.getenv('EMAIL_HOST')
 # EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
@@ -151,5 +167,6 @@ ADMIN_EMAIL = str(os.getenv('EMAIL_HOST_USER'))
 
 
 # Celery settings
-CELERY_BROKER_URL = "redis://localhost:6379"
+# CELERY_BROKER_URL = "rediss://red-cjcc2f7db61s73drgf60:77X74TBN8O7oTv7OrFbTbHvMaGhGjEuY@frankfurt-redis.render.com:6379"
 CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BROKER_URL = "redis://localhost:6379"
