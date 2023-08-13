@@ -33,6 +33,7 @@ Navigate to the folder where the manage.py file is located
 Run the migrations:
 ```
 python3 manage.py makemigrations
+python3 manage.py migrate
 ```
 Run the project:
 ```
